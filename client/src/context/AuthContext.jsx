@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       // Verify token and get user info
-      axios.get('http://https://university-management-system-0bjs.onrender.com/api/auth/verify', {
+      axios.get('http://https://localhost:5000/auth/verify', {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(response => {
@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const response = await axios.post('http://https://university-management-system-0bjs.onrender.com/api/auth/login', credentials);
+      const response = await axios.post('http://https://localhost:5000/api/auth/login', credentials);
       const { token, user: userData } = response.data;
       localStorage.setItem('token', token);
       setUser(userData);
